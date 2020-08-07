@@ -243,7 +243,7 @@ func (b *{{.Name|lcFirst}}Batch) end(l *{{.Name}}) {
 	close(b.done)
 }
 
-func Sort{{.ValType.Name}}ById(keys []{{.KeyType.String}}, input []{{.ValType.String}}) []{{.ValType.String}} {
+func sort{{.ValType.Name}}ByIDs(keys []{{.KeyType.String}}, input []{{.ValType.String}}) []{{.ValType.String}} {
 	m := map[{{.KeyType.String}}]{{.ValType.String}}{}
 	for _, obj := range input {
 		m[obj.ID] = obj
