@@ -242,4 +242,17 @@ func (b *{{.Name|lcFirst}}Batch) end(l *{{.Name}}) {
 	b.data, b.error = l.fetch(b.keys)
 	close(b.done)
 }
+
+func Sort{{.ValType.Name}}ById(keys []{{.KeyType.String}}, input []{{.ValType.String}}) []{{.ValType.String}} {
+	m := map[{{.KeyType.String}}]{{.ValType.String}}{}
+	for _, obj := range input {
+		m[obj.ID] = obj
+	}
+
+	sortedObjs := make([]{{.ValType.String}}, len(keys))
+	for i, id := range keys {
+		sortedObjs[i] = m[id]
+	}
+	return sortedObjs
+}
 `))
